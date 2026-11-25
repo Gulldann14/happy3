@@ -1,0 +1,401 @@
+:root {
+    --bg-color: #0B132B; 
+    --text-main: #F4F4F9;
+    --text-muted: #B8B8D1;
+    --gold: #D4AF37;
+    --gold-light: #F3E5AB;
+    --glass-bg: rgba(28, 37, 65, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Анимация появления */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--gold);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* --- Секция 1: Hero --- */
+.hero .main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 600;
+    background: linear-gradient(to right, #F3E5AB, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.scroll-down {
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: var(--gold);
+    animation: bounce 2s infinite;
+}
+
+/* --- Секция 2: Таймлайн --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--gold);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+
+.timeline-item .content {
+    padding: 20px 30px;
+    background: var(--glass-bg);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    position: relative;
+}
+
+.timeline-item h3 {
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+}
+
+.timeline-item p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- Секция 3: Галерея --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    border-color: var(--gold);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Секция 4: Игра --- */
+.game-instructions {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.game-container {
+    background: var(--glass-bg);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.score-board {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+}
+
+#score {
+    color: var(--gold);
+    font-size: 1.4rem;
+}
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.reset-btn:hover {
+    background: var(--gold);
+    color: var(--bg-color);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.tile {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    user-select: none;
+}
+
+.tile:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tile.selected {
+    transform: scale(1.1);
+    background: rgba(212, 175, 55, 0.3);
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.tile.pop {
+    animation: popAnimation 0.3s ease-out forwards;
+}
+
+@keyframes popAnimation {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+/* --- Секция 5: Письмо --- */
+.letter-box {
+    max-width: 700px;
+    background: var(--glass-bg);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.typewriter-container {
+    min-height: 150px;
+}
+
+.typewriter-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+.cursor {
+    color: var(--gold);
+    font-weight: bold;
+    animation: blink 1s step-end infinite;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+}
+
+/* --- Секция 6: Финал --- */
+.primary-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.primary-btn:hover {
+    background: var(--gold);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.surprise-text {
+    margin-top: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Мобильная адаптация */
+@media screen and (max-width: 768px) {
+    .timeline::after { left: 31px; }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-item.right { left: 0%; }
+    .letter-box { padding: 25px; }
+    .tile { font-size: 1.5rem; }
+}
+        /* Стили для подписи под фото */
+        .gallery-item {
+            display: flex;
+            flex-direction: column; /* Чтобы текст был под фото */
+            background: var(--glass-bg); /* Добавляем фон для красоты */
+        }
+
+        .photo-caption {
+            padding: 15px 10px;
+            text-align: center;
+            color: var(--gold-light);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+/* --- Всплывающее окно с наградой --- */
+.reward-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.95));
+    border: 2px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    color: var(--gold-light);
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.reward-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}

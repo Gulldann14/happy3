@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения, Мама!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Canvas для фоновых частиц -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Секция 1: Обложка -->
+    <section class="hero reveal">
+        <div class="container">
+            <h1 class="main-title">Любимой Маме</h1>
+            <p class="subtitle">С самым теплым и искренним Днем Рождения</p>
+            <div class="scroll-down">Листай вниз ↓</div>
+        </div>
+    </section>
+
+    <!-- Секция 2: Таймлайн -->
+    <section class="timeline-section reveal">
+        <h2 class="section-title">Наша история</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="content">
+                    <h3>Твое тепло</h3>
+                    <p>С самого детства ты всегда была рядом, согревала и поддерживала. Спасибо за бессонные ночи и твою бесконечную любовь.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="content">
+                    <h3>Твоя мудрость</h3>
+                    <p>Ты научила меня важным вещам, которые помогли мне стать тем, кто я есть сейчас. Твои советы всегда со мной.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="content">
+                    <h3>Твоя забота</h3>
+                    <p>Даже сейчас, когда я вырос, твоя забота чувствуется в каждом звонке и каждом добром слове.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="gallery-section reveal">
+        <h2 class="section-title">Мгновения</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="1.jpg" alt="Мама"></div>
+            <div class="gallery-item">
+                <img src="3.jpg" alt="Я и брат">
+                <div class="photo-caption">Мы твои защитники</div>
+            </div>
+            <div class="gallery-item"><img src="2.jpg" alt="Мама"></div>
+        </div>
+    </section>
+        <section class="gallery-section reveal">
+        <h2 class="section-title">Мы Тебя Очень Любим</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="4.jpg" alt="Мама"></div>
+            <div class="gallery-item">
+                <img src="6.jpg" alt="Я и брат">
+                <div class="photo-caption">Мы твои защитники</div>
+            </div>
+            <div class="gallery-item"><img src="7.jpg" alt="Мама"></div>
+        </div>
+    </section>
+
+    <!-- Секция 4: Игра 3 в ряд -->
+    <section class="game-section reveal">
+        <h2 class="section-title">Сделано с любовью</h2>
+        <p class="game-instructions">Нажми на два соседних элемента, чтобы поменять их местами и собрать 3 в ряд!</p>
+        <p class="game-instructions">Награды на 30, 100, 200 очках</p>
+        <div class="game-container">
+            <div class="game-header">
+                <div class="score-board">Очки: <span id="score">0</span></div>
+                <button id="reset-game" class="reset-btn">Заново</button>
+            </div>
+            <div id="game-board" class="game-board"></div>
+        </div>
+    </section>
+
+    <!-- Секция 5: Письмо -->
+    <section class="letter-section reveal">
+        <h2 class="section-title">От всего сердца</h2>
+        <div class="letter-box">
+            <div class="typewriter-container">
+                <p id="typewriter" class="typewriter-text"></p>
+                <span class="cursor">|</span>
+            </div>
+            <p class="signature">Твой любимый сын, Ислам.</p>
+        </div>
+    </section>
+
+    <!-- Секция 6: Финал и Салют -->
+    <section class="finale reveal">
+        <button id="celebrate-btn" class="primary-btn">Нажми, чтобы отпраздновать 🎉</button>
+        <div id="surprise-text" class="surprise-text"></div>
+    </section>
+
+    <script src="js.js"></script>
+</body>
+</html>
